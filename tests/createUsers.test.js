@@ -79,6 +79,7 @@ describe('Rota /api/users', () => {
                 .then(({body}) => body);
         });
 
+<<<<<<< HEAD
         it('firstUserList: A primeira requisição GET para a rota deve retornar 2 registros', () => {
             expect(firstUserList).to.have.length(2);
         });
@@ -92,22 +93,54 @@ describe('Rota /api/users', () => {
         });
 
         it('createRequest: O objeto possui a propriedade "message"', () => {
+=======
+        after(async () => {
+            User.create.restore();
+            User.findAll.restore();
+        })
+
+        it('GET: A lista inicial de usuários deve conter 2 registros', () => {
+            expect(firstUserList).to.have.length(2);
+        });
+
+        it('POST: Retorna o código de status 201 após a inserção', () => {
+            expect(createRequest).to.have.status(201);
+        });
+
+        it('POST: Retorna um objeto no corpo da resposta', () => {
+            expect(createRequest.body).to.be.a('object');
+        });
+
+        it('POST: O objeto possui a propriedade "message"', () => {
+>>>>>>> 0cb31e9369535b3feb1c0bd6e0b65ec2b2408534
             expect(createRequest.body)
               .to.have.property('message');
         });
 
+<<<<<<< HEAD
         it('createRequest: A propriedade "message" possui o texto "Novo usuário criado com sucesso"', 
+=======
+        it('POST: A propriedade "message" possui o texto "Novo usuário criado com sucesso"', 
+>>>>>>> 0cb31e9369535b3feb1c0bd6e0b65ec2b2408534
           () => {
             expect(createRequest.body.message)
               .to.be.equal('Novo usuário criado com sucesso');
           }
         );
 
+<<<<<<< HEAD
         it('secondUserList: A segunda requisição GET para rota deve retornar, por tanto, 3 registros', () => {
             expect(secondUserList).to.have.length(3);
         });
 
         it('secondUserList: O registro criado deve corresponder ao enviado na requisição POST', () => {
+=======
+        it('GET: A lista de usuários após a inserção deve conter 3 registros', () => {
+            expect(secondUserList).to.have.length(3);
+        });
+
+        it('GET: O registro criado deve corresponder ao enviado na requisição POST', () => {
+>>>>>>> 0cb31e9369535b3feb1c0bd6e0b65ec2b2408534
             expect(secondUserList[2]).to.contain(newUser);
         })
     });
