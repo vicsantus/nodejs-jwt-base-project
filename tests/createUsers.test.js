@@ -16,6 +16,10 @@ describe('Rota /api/users', () => {
         let createRequest = {};
         let firstUserList = [];
         let secondUserList = [];
+        const newUser = {
+            username: 'jane',
+            password: 'senha123'
+        };
 
         before(async () => {
             // Intercepta os métodos utilizados pelo modelo do sequelize
@@ -39,10 +43,7 @@ describe('Rota /api/users', () => {
             createRequest = await chai
                 .request(server)
                 .post('/api/users')
-                .send({
-                    username: 'jane',
-                    password: 'senha123'
-                });          
+                .send(newUser);          
             secondUserList = await chai
                 .request(server)
                 .get('/api/users')
@@ -54,32 +55,36 @@ describe('Rota /api/users', () => {
             User.findAll.restore();
         })
 
-        it('a lista inicial de pessoas usuárias deve conter 2 registros', () => {
+        it('GET: A lista inicial de usuários deve conter 2 registros', () => {
             expect(firstUserList).to.have.length(2);
         });
 
-        it('retorna o código de status 201 após a inserção', () => {
+        it('POST: Retorna o código de status 201 após a inserção', () => {
             expect(createRequest).to.have.status(201);
         });
 
-        it('retorna um objeto no corpo da resposta', () => {
+        it('POST: Retorna um objeto no corpo da resposta', () => {
             expect(createRequest.body).to.be.a('object');
         });
 
-        it('o objeto possui a propriedade "message"', () => {
+        it('POST: O objeto possui a propriedade "message"', () => {
             expect(createRequest.body)
               .to.have.property('message');
         });
 
-        it('a propriedade "message" possui o texto "Novo usuário criado com sucesso"', 
+        it('POST: A propriedade "message" possui o texto "Novo usuário criado com sucesso"', 
           () => {
             expect(createRequest.body.message)
               .to.be.equal('Novo usuário criado com sucesso');
           }
         );
 
-        it('a lista de pessoas usuárias após a inserção deve conter 3 registros', () => {
+        it('GET: A lista de usuários após a inserção deve conter 3 registros', () => {
             expect(secondUserList).to.have.length(3);
         });
+
+        it('GET: O registro criado deve corresponder ao enviado na requisição POST', () => {
+            expect(secondUserList[2]).to.contain(newUser);
+        })
     });
 });
