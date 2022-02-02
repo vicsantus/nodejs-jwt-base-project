@@ -42,16 +42,19 @@ const mockFindOne = (Instance, where) => {
   }
 
   const entries = Object.entries(where);
-  const results = [];
+  let result;
 
-  entries.forEach(entryEl => {
-    const index = Instance.findIndex(instanceEl => 
-      !!instanceEl[entryEl[0]] && instanceEl[entryEl[0]] === entryEl[1])
+  entries.forEach(entry => {
+    const [key, value] = [entry[0], entry[1]];
+
+    const index = Instance
+      .findIndex(item => !!item[key] && item[key] === value);
     if(index !== -1){
-      results.push(Instance[index]);
+      result = Instance[index];
     }
   });
-  return results;
+
+  return result;
 };
 
 /*
