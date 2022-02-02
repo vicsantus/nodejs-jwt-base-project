@@ -4,6 +4,7 @@ const chaiHttp = require('chai-http');
 
 const server = require('../api/app');
 
+// Importação do modelo original, contido em `models`, a partir da raiz
 const { User } = require('../models');
 // Importação do mock utilizado nesse contexto
 const { User: userMock }  = require('./mock/models')
@@ -39,12 +40,12 @@ describe('Rota /api/users', () => {
                 .get('/api/users');
         });
 
-        it('A requisição GET para a rota traz uma lista inicial contendo dois registros de pessoas usuárias', () => {
-            expect(response.body).to.have.length(2);
-        });
-
         it('Essa requisição deve retornar código de status 200', () => {
             expect(response).to.have.status(200);
+        });
+
+        it('A requisição GET para a rota traz uma lista inicial contendo dois registros de pessoas usuárias', () => {
+            expect(response.body).to.have.length(2);
         });
     });
 
