@@ -18,10 +18,10 @@ No seu terminal, cmd, power shell ou bash execute os seguintes comandos:
 
 ## Estrutura base do projeto
 
-Abaixo, está a estrutura base do projeto. Ele implementa uma API em NodeJS e Express que permite criar usuários, listar posts e fazer login. O projeto base contém uma autenticação simples. Durante a aula, é mostrado como adicionar à API autenticação via JWT.
+Abaixo, está a estrutura fonte que foi movida para `./src`. Ele implementa uma API em NodeJS e Express que permite criar usuários, listar posts e fazer login. O projeto base contém autenticações utilizando `JWT`. Durante a aula, é mostrado como adicionar à API autenticação via JWT.
  
 ```
-├── README.md
+./src
 ├── api
 │  ├── routes.js
 │  └── server.js
@@ -39,12 +39,9 @@ Abaixo, está a estrutura base do projeto. Ele implementa uma API em NodeJS e Ex
 │  ├── index.js
 │  ├── Post.js
 │  └── User.js
-├── seeders
-│  ├── users.js
-│  └── posts.js
-├── .env.example
-├── package-lock.json
-└── package.json
+└── seeders
+   ├── users.js
+   └── posts.js
 ```
 
 ### Modelos
