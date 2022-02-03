@@ -18,7 +18,7 @@ No seu terminal, cmd, power shell ou bash execute os seguintes comandos:
 
 ## Estrutura base do projeto
 
-Abaixo, está a estrutura fonte que foi movida para `./src`. Ele implementa uma API em NodeJS e Express que permite criar usuários, listar posts e fazer login. O projeto base contém autenticações utilizando `JWT`. Durante a aula, é mostrado como adicionar à API autenticação via JWT.
+Abaixo, está a estrutura fonte que foi movida para `./src`. Ele implementa uma API em NodeJS e Express que permite criar usuários, listar posts e fazer login. O projeto base contém autenticações utilizando `JWT`. Durante a aula, é mostrado como testar as requisições que usam `JWT`.
  
 ```
 ./src
