@@ -12,8 +12,6 @@ module.exports = async (req, res, next) => {
     }
     const { authorization } = req.headers;
 
-    console.log(authorization);
-
     const { username } = jwt.verify(authorization, JWT_KEY);
 
     const user = await User.findOne({ where: { username } });
