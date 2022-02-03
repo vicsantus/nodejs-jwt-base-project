@@ -39,6 +39,8 @@ Abaixo, está a estrutura fonte que foi movida para `./src`. Ele implementa uma 
 │  ├── index.js
 │  ├── Post.js
 │  └── User.js
+├── middlewares
+│  └── auth.js
 └── seeders
    ├── users.js
    └── posts.js
