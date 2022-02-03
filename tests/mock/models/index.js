@@ -24,12 +24,12 @@ const Posts = require('./Posts.json');
   os testes.
 */
 const mockCreate = (Instance, data) => {
-  if(!data){
+  if (!data) {
     return;
   }
 
   const newData = data;
-  if(!!Instance[0].id) {
+  if (Instance[0].id) {
     newData.id = Date.now();
   }
   Instance.push(newData);
@@ -37,19 +37,19 @@ const mockCreate = (Instance, data) => {
 };
 
 const mockFindOne = (Instance, where) => {
-  if(!where){
+  if (!where) {
     return Instance[0];
   }
 
   const entries = Object.entries(where);
   let result;
 
-  entries.forEach(entry => {
+  entries.forEach((entry) => {
     const [key, value] = [entry[0], entry[1]];
 
     const index = Instance
-      .findIndex(item => !!item[key] && item[key] === value);
-    if(index !== -1){
+      .findIndex((item) => !!item[key] && item[key] === value);
+    if (index !== -1) {
       result = Instance[index];
     }
   });
@@ -68,7 +68,7 @@ const mockFindOne = (Instance, where) => {
 const User = {
   create: async (data) => mockCreate(Users, data),
   findAll: async () => Users,
-  findOne: async ({ where }) => mockFindOne(Users, where)
+  findOne: async ({ where }) => mockFindOne(Users, where),
 };
 
 const Post = {
@@ -78,5 +78,5 @@ const Post = {
 // Ao final, exportamos nossos Modelos falsos, para utilização nos testes
 module.exports = {
   User,
-  Post
-}
+  Post,
+};
