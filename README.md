@@ -23,6 +23,7 @@ Abaixo, está a estrutura fonte que foi movida para `./src`. Ele implementa uma 
 ```
 ./src
 ├── api
+│  ├── app.js
 │  ├── routes.js
 │  └── server.js
 ├── config
