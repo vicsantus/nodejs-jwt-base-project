@@ -38,24 +38,18 @@ const mockCreate = (Instance, data) => {
 
 const mockFindOne = (Instance, where) => {
   if (!where) {
-    return Instance[0];
+        return Instance[0];
   }
 
-  const entries = Object.entries(where);
-  let result;
+  const whereFields = Object.keys(where);
 
-  entries.forEach((entry) => {
-    const [key, value] = [entry[0], entry[1]];
-
-    const index = Instance
-      .findIndex((item) => !!item[key] && item[key] === value);
-    if (index !== -1) {
-      result = Instance[index];
-    }
+  const result = Instance.filter(item => {
+    const onlyMatch = whereFields.map( key => item[key] === where[key]);
+    return onlyMatch.filter(v=>v).length === whereFields.length;
   });
 
-  return result;
-};
+  return result[0];
+}
 
 /*
   No nosso caso, os modelos aqui precisam de 3 funções principais
