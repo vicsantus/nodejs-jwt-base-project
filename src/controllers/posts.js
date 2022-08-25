@@ -1,9 +1,6 @@
-const { Post } = require('../models');
+const { PostService } = require('../services');
 
 module.exports = async (req, res) => {
-  const posts = await Post.findAll({ 
-    where: { userId: req.user.id },
-    attributes: { exclude: 'id' },
-  });
+  const posts = await PostService.getPosts(req.user.id);
   res.status(200).json({ mockPosts: posts });
 };

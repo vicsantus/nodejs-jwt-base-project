@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { UserService } = require('../services');
 
 const validateBody = (body, res) => {
   const { username, password } = body;
@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
 
     if (!validateBody(req.body, res)) return;
 
-    const user = await User.findOne({ where: { username } });
+    const user = await UserService.getByUsername(username);
 
     if (!validateUserOrPassword(user, password, res)) return;
 
