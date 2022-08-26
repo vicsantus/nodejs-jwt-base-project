@@ -16,9 +16,9 @@ services:
     ports:
       - 3001:3001
     environment:
-      - DB_HOST=mysql
-      - DB_USER=root
-      - DB_PASSWORD=password
+      - SQL_HOST=mysql
+      - SQL_USERNAME=root
+      - SQL_PASSWORD=1234
       - PORT=3001
     volumes:
       - ./:/usr/app
