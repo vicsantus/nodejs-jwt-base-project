@@ -39,8 +39,6 @@ npm install
 npm start
 ```
 
-Se sua aplicação não iniciar, faça o `docker-compose down`, retire a chave `prestart` do script `package.json`. Inicie novamente o processo anterior e após o `npm install` execute todo o código que esta no `prestart`, após isso seu `npm start` vai funcionar.
-
 ## Estrutura base do projeto
 
 Abaixo, está a estrutura base do projeto. Ele implementa uma API em NodeJS e Express que permite criar usuários, listar posts e fazer login. O projeto base contém uma autenticação simples. Durante a aula, é mostrado como adicionar à API autenticação via JWT.
