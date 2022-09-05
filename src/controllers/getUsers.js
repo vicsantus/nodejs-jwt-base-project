@@ -1,8 +1,8 @@
-const { User } = require('../models');
+const { UserService } = require('../services');
 
-module.exports = async (req, res) => {
+module.exports = async (_req, res) => {
   try {
-    const users = await User.findAll();
+    const users = await UserService.getUsers();
 
     if (!users) throw Error;
 

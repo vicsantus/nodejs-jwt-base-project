@@ -1,9 +1,9 @@
-const { User } = require('../models');
+const { UserService } = require('../services');
 
 module.exports = async (req, res) => {
   try {
     const { username, password } = req.body;
-    const user = await User.create({ username, password });
+    const user = await UserService.createUser({ username, password });
 
     if (!user) throw Error;
 
