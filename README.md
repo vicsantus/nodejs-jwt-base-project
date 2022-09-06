@@ -64,6 +64,7 @@ Abaixo, está a estrutura base do projeto. Ele implementa uma API em NodeJS e Ex
 │  │  ├── users.js
 │  │  └── posts.js
 │  ├── services
+│  │  ├── index.js
 │  │  ├── postService.js
 │  │  └── userService.js
 │  ├── app.js
