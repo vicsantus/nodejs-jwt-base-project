@@ -1,18 +1,48 @@
 Esse projeto é uma API base para ser utilizada na [aula sobre JWT](https://app.betrybe.com/course/back-end/autenticacao-e-upload-de-arquivos/nodejs-jwt-json-web-token/acf1c24f-d531-4cf0-be9b-2384e37799d7) do curso de NodeJS da Trybe.
 
-##  Baixando o projeto
+## Baixando o projeto
 
 No seu terminal, cmd, power shell ou bash execute os seguintes comandos:
 
-- `git clone https://github.com/tryber/nodejs-jwt-base-project.git`
+- `git clone git@github.com:tryber/nodejs-jwt-base-project.git`
 - `cd nodejs-jwt-base-project`
 - `git checkout sd-0x-lecture`
 - `npm i`
-- `npm run dev`
+
+## Preparando o ambiente
+
+- Faça uma cópia do arquivo `.env.example`, criando um arquivo `.env` com as suas credenciais SQL;
+- No seu terminal, execute o comando `npm start`;
+  - Esse comando vai, automaticamente, rodar o script de `prestart`, que inicializará o banco com o `sequelize`.
+- O comando acima irá criar o banco de dados `jwt_exercises_dev` e povoar as tabelas `Users` e `Posts`.
+
+### Rodando via docker-compose
+
+Para rodar a aplicação via container você vai precisar utilizar os seguintes comandos:
+
+> Iniciar os containers em segundo plano
+```bash
+docker-compose up -d
+```
+
+> Acessar o terminal do container
+```bash
+docker exec -it api bash
+```
+
+> Instalar as dependências da aplicação
+```bash
+npm install
+```
+
+> Iniciar a aplicação
+```bash
+npm start
+```
 
 ## Estrutura base do projeto
 
-Abaixo, está a estrutura base do projeto. Ele implementa uma API em NodeJS e Express  que permite criar usuários, listar posts e fazer login. O projeto base contém uma autenticação simples. Durante a aula, é mostrado como adicionar à API autenticação via JWT.
+Abaixo, está a estrutura base do projeto. Ele implementa uma API em NodeJS e Express que permite criar usuários, listar posts e fazer login. O projeto base contém uma autenticação simples. Durante a aula, é mostrado como adicionar à API autenticação via JWT.
  
 ```
 ├── controllers
@@ -37,7 +67,7 @@ Modelos são responsáveis por fazer o mapeamento entre as entidades que sua apl
 ### Controllers
 
 Controllers são as funções utilizadas como callbacks na definição de rotas.
-Eles são resposáveis por lidar com as requisições que chegam nas diferentes rotas de sua aplicação, executando regras de negócio e criando a resposta que será enviada para o cliente. Normalmente, interagem com um ou mais modelos para ler/escrever dados do banco de dados.
+Eles são responsáveis por lidar com as requisições que chegam nas diferentes rotas de sua aplicação e criando a resposta que será enviada para o cliente. Normalmente, interagem com um ou mais modelos para ler/escrever dados do banco de dados.
 
 A API possui três controllers:
   

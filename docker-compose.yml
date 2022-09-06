@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: container_mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+    ports:
+      - 3306:3306
+
+  api:
+    container_name: api
+    image: node:16
+    restart: always
+    ports:
+      - 3001:3001
+    user: node
+    environment:
+      - SQL_HOST=mysql
+      - SQL_USERNAME=root
+      - SQL_PASSWORD=1234
+      - PORT=3001
+    volumes:
+      - ./:/usr/app
+    working_dir: /usr/app
+    command: bash
+    # As duas opções abaixo correspondem ao -it
+    tty: true # -t
+    stdin_open: true #-i 
+    depends_on:
+      - mysql
