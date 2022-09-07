@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const { UserService } = require('../services');
 require('dotenv/config');
 
-const secret = 'seusecretdetoken';
+const secret = process.env.JWT_SECRET || 'seusecretdetoken';
 
 const isBodyValid = (username, password) => username && password;
 
