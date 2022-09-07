@@ -11,10 +11,11 @@ services:
 
   api:
     container_name: api
-    image: node:16.14
+    image: node:16
     restart: always
     ports:
       - 3001:3001
+    user: node
     environment:
       - SQL_HOST=mysql
       - SQL_USERNAME=root
@@ -23,7 +24,7 @@ services:
     volumes:
       - ./:/app
     working_dir: /app
-    command: npm start # note que o containter já vai iniciar a aplicação
+    command: bash # note que o containter já vai iniciar a aplicação
     # As duas opções abaixo correspondem ao -it
     tty: true # -t
     stdin_open: true #-i 
