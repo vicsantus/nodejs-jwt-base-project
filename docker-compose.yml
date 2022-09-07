@@ -2,29 +2,28 @@ version: '3.1'
 
 services:
   mysql:
-    image: mysql:5.7
+    image: mysql:8.0.23
     container_name: container_mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=1234
     ports:
       - 3306:3306
 
   api:
     container_name: api
-    image: node:16
+    image: node:16.14
     restart: always
     ports:
       - 3001:3001
     environment:
-      - DB_HOST=mysql
-      - DB_NAME=
-      - DB_USER=root
-      - DB_PASSWORD=password
-      - SERVER_PORT=3001
+      - SQL_HOST=mysql
+      - SQL_USERNAME=root
+      - SQL_PASSWORD=1234
+      - PORT=3001
     volumes:
-      - ./:/usr/app
-    working_dir: /usr/app
-    command: bash
+      - ./:/app
+    working_dir: /app
+    command: npm start # note que o containter já vai iniciar a aplicação
     # As duas opções abaixo correspondem ao -it
     tty: true # -t
     stdin_open: true #-i 
