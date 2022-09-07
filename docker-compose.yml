@@ -15,6 +15,7 @@ services:
     restart: always
     ports:
       - 3001:3001
+    user: node
     environment:
       - SQL_HOST=mysql
       - SQL_USERNAME=root

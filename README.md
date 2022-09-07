@@ -15,32 +15,60 @@ No seu terminal, cmd, power shell ou bash execute os seguintes comandos:
   - Esse comando vai, automaticamente, rodar o script de `prestart`, que inicializará o banco com o `sequelize`.
 - O comando acima irá criar o banco de dados `jwt_exercises_dev` e povoar as tabelas `Users` e `Posts`.
 
+### Rodando via docker-compose
+
+Para rodar a aplicação via container você vai precisar utilizar os seguintes comandos:
+
+> Iniciar os containers em segundo plano
+```bash
+docker-compose up -d
+```
+
+> Acessar o terminal do container
+```bash
+docker exec -it api bash
+```
+
+> Instalar as dependências da aplicação
+```bash
+npm install
+```
+
+> Iniciar a aplicação
+```bash
+npm start
+```
+
 ## Estrutura base do projeto
 
 Abaixo, está a estrutura base do projeto. Ele implementa uma API em NodeJS e Express que permite criar usuários, listar posts e fazer login. O projeto base contém uma autenticação simples. Durante a aula, é mostrado como adicionar à API autenticação via JWT.
  
 ```
 ├── README.md
-├── api
+├── src
+│  ├── config
+│  │  └── config.js
+│  ├── controllers
+│  │  ├── createUser.js
+│  │  ├── getUsers.js  
+│  │  ├── login.js
+│  │  └── posts.js
+│  ├── migrations
+│  │  ├── users.js
+│  │  └── posts.js  
+│  ├── models
+│  │  ├── index.js
+│  │  ├── Post.js
+│  │  └── User.js
+│  ├── seeders
+│  │  ├── users.js
+│  │  └── posts.js
+│  ├── services
+│  │  ├── postService.js
+│  │  └── userService.js
+│  ├── app.js
 │  ├── routes.js
 │  └── server.js
-├── config
-│  └── config.js
-├── controllers
-│  ├── createUser.js
-│  ├── getUsers.js  
-│  ├── login.js
-│  └── posts.js
-├── migrations
-│  ├── users.js
-│  └── posts.js  
-├── models
-│  ├── index.js
-│  ├── Post.js
-│  └── User.js
-├── seeders
-│  ├── users.js
-│  └── posts.js
 ├── .env.example
 ├── package-lock.json
 └── package.json
@@ -64,6 +92,10 @@ Seeders são responsáveis por povoar os dados das tabelas do banco de dados.
 
 Estão organizadas dentro da pasta `seeders`. No exemplo, existem seeders para as tabelas `Users` e `Posts`.
 
+### Services
+
+Estão concentradas as regras de negócio da aplicação, fazendo a comunicação entre camada de modelo e de controle.
+
 ### Controllers
 
 Controllers são as funções utilizadas como callbacks na definição de rotas.
@@ -79,13 +111,17 @@ A API possui quatro controllers:
 
   - `posts.js`: Encontra os posts de um usuário.
  
-### `api/routes.js`
+### `src/routes.js`
 
 Esse é um arquivo que concentra os controllers do projeto.
  
-### `api/server.js`
+### `src/app.js`
 
 Aqui é onde é criado de fato a API com o Express. Também é onde todas as rotas são configuradas.
+
+### `src/server.js`
+
+Arquivo que configura as portas da aplicação e inicia o servidor Express.
 
 ### `.env.example` -> `.env`
 

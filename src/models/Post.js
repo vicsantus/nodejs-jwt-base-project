@@ -9,5 +9,10 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'Posts',
   });
 
+  Post.associate = (models) => {
+    Post.belongsTo(models.User,
+      { foreignKey: { name: 'userId', field: 'user_id' }, as: 'users' });
+  };
+
   return Post;
 };
