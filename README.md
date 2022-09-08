@@ -104,9 +104,9 @@ Eles são responsáveis por lidar com as requisições que chegam nas diferentes
 
 A API possui quatro controllers:
 
-  - `createUser.js`: Lida com a criação de novos usuários.
+  - `createUser.js`: Lida com a criação de novas pessoas usuárias.
 
-  - `getUsers.js`: Encontra os usuários cadastrados.
+  - `getUsers.js`: Encontra as pessoas usuárias cadastradas.
   
   - `login.js`: Responsável pela lógica de login.
 
