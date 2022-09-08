@@ -6,6 +6,7 @@
     "prestart": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all",
     "start": "nodemon .",
     "test": "mocha ./tests/**/*$NAME*.test.js --exit",
+    "debug": "nodemon --inspect=0.0.0.0:9229 src/server.js",
     "test:coverage": "nyc --include='src/**/*.js' npm run test",
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
