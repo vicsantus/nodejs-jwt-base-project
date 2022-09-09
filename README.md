@@ -54,16 +54,17 @@ Abaixo, está a estrutura base do projeto. Ele implementa uma API em NodeJS e Ex
 │  │  ├── login.js
 │  │  └── posts.js
 │  ├── migrations
-│  │  ├── users.js
-│  │  └── posts.js  
+│  │  ├── [timestamp]-users.js
+│  │  └── [timestamp]-posts.js
 │  ├── models
 │  │  ├── index.js
 │  │  ├── Post.js
 │  │  └── User.js
 │  ├── seeders
-│  │  ├── users.js
-│  │  └── posts.js
+│  │  ├── [timestamp]-users.js
+│  │  └── [timestamp]-posts.js
 │  ├── services
+│  │  ├── index.js
 │  │  ├── postService.js
 │  │  └── userService.js
 │  ├── app.js
@@ -103,9 +104,9 @@ Eles são responsáveis por lidar com as requisições que chegam nas diferentes
 
 A API possui quatro controllers:
 
-  - `createUser.js`: Lida com a criação de novo usuários.
+  - `createUser.js`: Lida com a criação de novas pessoas usuárias.
 
-  - `getUsers.js`: Encontra os usuários cadastrados.
+  - `getUsers.js`: Encontra as pessoas usuárias cadastradas.
   
   - `login.js`: Responsável pela lógica de login.
 
