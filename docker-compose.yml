@@ -25,7 +25,6 @@ services:
     volumes:
       - ./:/app
     working_dir: /app
-    command: npm start # note que o containter já vai iniciar a aplicação
     # As duas opções abaixo correspondem ao -it
     tty: true # -t
     stdin_open: true #-i 
