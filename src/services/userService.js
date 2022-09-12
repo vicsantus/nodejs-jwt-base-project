@@ -6,8 +6,11 @@ const getUsers = () => User.findAll();
 
 const getByUsername = (username) => User.findOne({ where: { username } });
 
+const getByUserId = (userId) => User.findByPk(userId);
+
 module.exports = {
   createUser,
   getUsers,
   getByUsername,
+  getByUserId,
 };
