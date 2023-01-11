@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const { UserService } = require('../services');
-require('dotenv/config');
 
 const secret = process.env.JWT_SECRET || 'seusecretdetoken';
 
