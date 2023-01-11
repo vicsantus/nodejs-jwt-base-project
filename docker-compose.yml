@@ -11,7 +11,7 @@ services:
 
   api:
     container_name: api
-    image: node:16
+    image: node:16.14
     restart: always
     ports:
       - 3001:3001
